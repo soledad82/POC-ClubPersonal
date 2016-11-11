@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html ng-app="app">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/onsenui.css" />
+    <link rel="stylesheet" type="text/css" href="css/onsen-css-components.css" />
+    <link rel="stylesheet" type="text/css" href="css/onsen-css-components-default.css" />
+    <link rel="stylesheet" type="text/css" href="css/onsen-css-components-blue-basic-theme.css" />
+    <script type="text/javascript" src="lib/onsen/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/onsen/js/onsenui.min.js"></script>
+    <script type="text/javascript" src="lib/onsen/js/angular-onsenui.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <title>Club Personal</title>
+
+</head>
+
+<body>
+
+<ons-splitter var="mySplitter" ng-controller="SplitterController as splitter">
+    <ons-splitter-side side="left" width="220px" collapse swipeable>
+        <ons-page>
+            <ons-list>
+                <ons-list-item ng-click="splitter.load('home.html')" tappable>
+                    Home
+                </ons-list-item>
+                <ons-list-item ng-click="splitter.load('settings.html')" tappable>
+                    Settings
+                </ons-list-item>
+                <ons-list-item ng-click="splitter.load('about.html')" tappable>
+                    About
+                </ons-list-item>
+            </ons-list>
+        </ons-page>
+    </ons-splitter-side>
+    <ons-splitter-content page="home.html"></ons-splitter-content>
+</ons-splitter>
+
+<ons-template id="home.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button ng-click="mySplitter.left.open()">
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                Club Personal
+            </div>
+        </ons-toolbar>
+        <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
+            Swipe right to open the maenu!
+        </p>
+    </ons-page>
+</ons-template>
+
+<ons-template id="settings.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button ng-click="mySplitter.left.open()">
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                Settings
+            </div>
+        </ons-toolbar>
+    </ons-page>
+</ons-template>
+
+<ons-template id="about.html">
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button ng-click="mySplitter.left.open()">
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            <div class="center">
+                About
+            </div>
+        </ons-toolbar>
+    </ons-page>
+</ons-template>
+</body>
+</html>
